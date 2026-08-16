@@ -60,13 +60,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                   href={item.href}
                   id={`nav-link-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`text-[14px] font-medium transition-colors py-1.5 border-b-2 ${
-                    isActive
-                      ? 'text-gray-900 border-[#b91c1c]'
-                      : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
+                  className={`relative text-[14px] font-medium transition-colors py-1.5 group ${
+                    isActive ? 'text-gray-900 font-semibold' : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
                   {item.label}
+                  {/* Bottom Maroon Underline on Hover & Active */}
+                  <span
+                    className={`absolute bottom-0 left-0 h-[2px] bg-[#b91c1c] transition-all duration-300 ease-in-out ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                  />
                 </a>
               );
             })}
