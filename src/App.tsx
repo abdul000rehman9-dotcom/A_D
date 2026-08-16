@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { KeyHighlightsBar } from './components/KeyHighlightsBar';
@@ -21,8 +21,21 @@ import { ContactSection } from './components/ContactSection';
 import { PreFooterCta } from './components/PreFooterCta';
 import { Footer } from './components/Footer';
 import { ModalJobTalent } from './components/ModalJobTalent';
+import { PortalApp } from './portal/PortalApp';
 
 export default function App() {
+  const [isPortalRoute, setIsPortalRoute] = useState(() => {
+    return window.location.pathname.startsWith('/management-portal');
+  });
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setIsPortalRoute(window.location.pathname.startsWith('/management-portal'));
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const [modalState, setModalState] = useState<{
     isOpen: boolean;
     type: 'talent' | 'job' | 'veteran';
@@ -30,6 +43,10 @@ export default function App() {
     isOpen: false,
     type: 'talent',
   });
+
+  if (isPortalRoute) {
+    return <PortalApp />;
+  }
 
   const openModal = (type: 'talent' | 'job' | 'veteran') => {
     setModalState({ isOpen: true, type });
@@ -58,6 +75,10 @@ export default function App() {
       <Navbar
         onOpenTalentModal={() => openModal('talent')}
         onOpenJobModal={() => openModal('job')}
+        onNavigateToPortal={() => {
+          window.history.pushState({}, '', '/management-portal');
+          setIsPortalRoute(true);
+        }}
       />
 
       {/* Main Page Content */}
@@ -115,7 +136,12 @@ export default function App() {
       </main>
 
       {/* 15. Footer */}
-      <Footer />
+      <Footer
+        onNavigateToPortal={() => {
+          window.history.pushState({}, '', '/management-portal');
+          setIsPortalRoute(true);
+        }}
+      />
 
       {/* Action Dialog / Modal */}
       <ModalJobTalent

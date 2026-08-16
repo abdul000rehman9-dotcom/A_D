@@ -5,11 +5,13 @@ import { NAV_ITEMS } from '../data/websiteData';
 interface NavbarProps {
   onOpenTalentModal?: () => void;
   onOpenJobModal?: () => void;
+  onNavigateToPortal?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenTalentModal,
   onOpenJobModal,
+  onNavigateToPortal,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeNav, setActiveNav] = useState('');
@@ -60,17 +62,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                   href={item.href}
                   id={`nav-link-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`relative text-[14px] font-medium transition-colors py-1.5 group ${
-                    isActive ? 'text-gray-900 font-semibold' : 'text-gray-600 hover:text-gray-900'
+                  className={`text-[14px] font-medium transition-colors py-1.5 border-b-2 ${
+                    isActive
+                      ? 'text-gray-900 border-[#b91c1c]'
+                      : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
                   }`}
                 >
                   {item.label}
-                  {/* Bottom Maroon Underline on Hover & Active */}
-                  <span
-                    className={`absolute bottom-0 left-0 h-[2px] bg-[#b91c1c] transition-all duration-300 ease-in-out ${
-                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                    }`}
-                  />
                 </a>
               );
             })}
@@ -156,6 +154,21 @@ export const Navbar: React.FC<NavbarProps> = ({
               Find Talent
             </button>
           </div>
+          {onNavigateToPortal && (
+            <div className="pt-2 text-center">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onNavigateToPortal();
+                }}
+                className="text-xs text-gray-500 hover:text-gray-900 font-medium py-1 inline-flex items-center gap-1.5"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#b91c1c]" />
+                <span>Admin Portal</span>
+              </button>
+            </div>
+          )}
         </div>
       )}
     </header>

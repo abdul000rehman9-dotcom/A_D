@@ -1,7 +1,11 @@
 import React from 'react';
 import { NAV_ITEMS, SERVICES, CONTACT_INFO } from '../data/websiteData';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigateToPortal?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigateToPortal }) => {
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
@@ -136,6 +140,19 @@ export const Footer: React.FC = () => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
           <p>© 2026 The American Dream Staffing Agency. All Rights Reserved.</p>
           <div className="flex items-center space-x-6">
+            <a
+              href="/management-portal"
+              onClick={(e) => {
+                if (onNavigateToPortal) {
+                  e.preventDefault();
+                  onNavigateToPortal();
+                }
+              }}
+              className="text-gray-400 hover:text-white transition-colors flex items-center gap-1 font-medium cursor-pointer"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#b91c1c] inline-block" />
+              <span>Admin Portal</span>
+            </a>
             <button
               type="button"
               onClick={() => alert('Privacy Policy: All data collected is strictly utilized for employment and recruitment processing.')}

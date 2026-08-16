@@ -26,7 +26,7 @@ export const ContactSection: React.FC = () => {
     if (errorMessage) setErrorMessage('');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName.trim()) {
       setErrorMessage('Please enter your full name.');
@@ -40,9 +40,21 @@ export const ContactSection: React.FC = () => {
     setIsSubmitting(true);
     setErrorMessage('');
 
-    // Simulate submission delay
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch('/api/form-submissions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Failed to submit your inquiry.');
+      }
+
       setSubmitted(true);
       setFormData({
         fullName: '',
@@ -52,7 +64,13 @@ export const ContactSection: React.FC = () => {
         interest: 'Finding a Job',
         message: '',
       });
-    }, 800);
+    } catch (err: any) {
+      setErrorMessage(
+        err.message || 'An error occurred while connecting to the server. Please try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
