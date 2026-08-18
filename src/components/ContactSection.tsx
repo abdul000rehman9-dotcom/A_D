@@ -98,39 +98,13 @@ export const ContactSection: React.FC = () => {
               <div className="space-y-6 mb-12">
                 <div>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400 block mb-1">
-                    PHONE
-                  </span>
-                  <a
-                    href={`tel:${CONTACT_INFO.phone.replace(/[^0-9]/g, '')}`}
-                    className="text-base font-bold text-gray-900 hover:text-[#b91c1c] transition-colors"
-                  >
-                    {CONTACT_INFO.phone}
-                  </a>
-                </div>
-
-                <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400 block mb-1">
-                    EMAIL
-                  </span>
-                  <a
-                    href={`mailto:${CONTACT_INFO.email}`}
-                    className="text-base font-bold text-gray-900 hover:text-[#b91c1c] transition-colors"
-                  >
-                    {CONTACT_INFO.email}
-                  </a>
-                </div>
-
-                <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400 block mb-1">
                     WEBSITE
                   </span>
                   <a
-                    href={`https://${CONTACT_INFO.website}`}
-                    target="_blank"
-                    rel="noreferrer"
+                    href="mailto:info@theamerciandreamstaffing.com"
                     className="text-base font-bold text-gray-900 hover:text-[#b91c1c] transition-colors"
                   >
-                    {CONTACT_INFO.website}
+                    info@theamerciandreamstaffing.com
                   </a>
                 </div>
               </div>

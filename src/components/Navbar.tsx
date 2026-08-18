@@ -32,24 +32,19 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-20 sm:h-22">
           {/* Logo */}
           <a
             href="#"
             id="brand-logo-link"
-            className="flex items-center gap-3.5 group cursor-pointer"
+            className="flex items-center gap-3 group cursor-pointer"
           >
-            <div className="w-10 h-10 bg-black flex items-center justify-center text-white font-bold text-base tracking-wider rounded-none shrink-0 shadow-xs">
-              AD
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[17px] font-bold text-gray-900 tracking-tight leading-tight">
-                The American Dream
-              </span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 leading-tight mt-0.5">
-                STAFFING AGENCY
-              </span>
-            </div>
+            <img
+              src="/logo1.png"
+              alt="The American Dream Staffing Agency"
+              className="h-14 sm:h-16 max-h-16 w-auto max-w-[240px] object-contain shrink-0"
+              referrerPolicy="no-referrer"
+            />
           </a>
 
           {/* Desktop Navigation */}
@@ -65,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className={`text-[14px] font-medium transition-colors py-1.5 border-b-2 ${
                     isActive
                       ? 'text-gray-900 border-[#b91c1c]'
-                      : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
+                      : 'text-gray-600 border-transparent hover:text-[#b91c1c] hover:border-[#b91c1c]'
                   }`}
                 >
                   {item.label}

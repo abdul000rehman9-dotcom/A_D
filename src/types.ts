@@ -37,7 +37,9 @@ export interface ProcessStep {
 export interface TeamMember {
   initials: string;
   name: string;
+  role?: string;
   title: string;
+  image?: string;
   roleDescription?: string;
 }
 

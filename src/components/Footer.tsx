@@ -35,18 +35,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToPortal }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-[#14213d]">
           {/* Column 1 - Brand & Mission */}
           <div className="lg:col-span-5 flex flex-col justify-start pr-0 lg:pr-8">
-            <div className="flex items-center gap-3.5 mb-6">
-              <div className="w-10 h-10 bg-white flex items-center justify-center text-black font-bold text-base tracking-wider rounded-none shrink-0 shadow-xs">
-                AD
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[17px] font-bold text-white tracking-tight leading-tight">
-                  The American Dream
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 leading-tight mt-0.5">
-                  STAFFING AGENCY
-                </span>
-              </div>
+            <div className="flex items-center mb-6">
+              <img
+                src="/logo.jpeg"
+                alt="The American Dream Staffing Agency"
+                className="h-24 sm:h-28 md:h-32 w-auto max-w-[320px] object-contain shrink-0"
+                referrerPolicy="no-referrer"
+              />
             </div>
 
             <p className="text-sm text-gray-300 font-medium mb-4">
@@ -108,28 +103,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToPortal }) => {
             <ul className="space-y-3 text-sm text-gray-300">
               <li>
                 <a
-                  href={`tel:${CONTACT_INFO.phone.replace(/[^0-9]/g, '')}`}
-                  className="hover:text-white transition-colors"
-                >
-                  {CONTACT_INFO.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${CONTACT_INFO.email}`}
+                  href="mailto:info@theamerciandreamstaffing.com"
                   className="hover:text-white transition-colors break-all"
                 >
-                  {CONTACT_INFO.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`https://${CONTACT_INFO.website}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  {CONTACT_INFO.website}
+                  info@theamerciandreamstaffing.com
                 </a>
               </li>
             </ul>
@@ -140,19 +117,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToPortal }) => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
           <p>© 2026 The American Dream Staffing Agency. All Rights Reserved.</p>
           <div className="flex items-center space-x-6">
-            <a
-              href="/management-portal"
-              onClick={(e) => {
-                if (onNavigateToPortal) {
-                  e.preventDefault();
-                  onNavigateToPortal();
-                }
-              }}
-              className="text-gray-400 hover:text-white transition-colors flex items-center gap-1 font-medium cursor-pointer"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#b91c1c] inline-block" />
-              <span>Admin Portal</span>
-            </a>
             <button
               type="button"
               onClick={() => alert('Privacy Policy: All data collected is strictly utilized for employment and recruitment processing.')}

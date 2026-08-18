@@ -270,31 +270,40 @@ export const ACCOUNTABILITY_ITEMS: AccountabilityItem[] = [
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
+  /*
   {
     initials: 'AR',
     name: 'Ahsan Rizvi',
+    role: 'Director',
     title: 'THE AMERICAN DREAM STAFFING AGENCY',
   },
   {
     initials: 'JR',
     name: 'Joseph Ross',
+    role: 'Director',
     title: 'THE AMERICAN DREAM STAFFING AGENCY',
   },
+  */
   {
     initials: 'AR',
-    name: 'Ahmer Rizvi',
+    name: 'Ahmed Rizvi',
+    role: 'Director',
     title: 'THE AMERICAN DREAM STAFFING AGENCY',
+    // image: '/director.jpeg',
   },
   {
     initials: 'AW',
     name: 'Arbab Wasi',
+    role: 'Director',
     title: 'THE AMERICAN DREAM STAFFING AGENCY',
+    // image: '/Ceo.jpeg',
   },
 ];
 
 export const CONTACT_INFO = {
-  phone: '(518) 423-3065',
-  email: 'ahmerrizvi364@gmail.com',
+  phone: '',
+  email: 'info@theamerciandreamstaffing.com',
   website: 'theamericandreamstaffing.com',
   footnote: 'Serving organizations and professionals across the United States.',
 };
+

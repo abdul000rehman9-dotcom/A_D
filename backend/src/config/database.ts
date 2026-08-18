@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 
+// Fail fast when MongoDB is offline/unreachable instead of buffering requests indefinitely
+mongoose.set('bufferCommands', false);
+
 let isConnected = false;
 
 function sanitizeMongoUri(rawUri: string): string {
