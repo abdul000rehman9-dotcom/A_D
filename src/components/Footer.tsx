@@ -39,7 +39,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToPortal }) => {
               <img
                 src="/logo.png"
                 alt="The American Dream Staffing Agency"
-                className="h-24 sm:h-28 md:h-32 w-auto max-w-[320px] object-contain shrink-0"
+                className="h-12 sm:h-16 md:h-20 w-auto max-w-[200px] object-contain shrink-0"
                 referrerPolicy="no-referrer"
               />
             </div>
